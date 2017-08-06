@@ -1,0 +1,9 @@
+<!-- Generated template for the ImagesComponent component -->
+<div>
+  {{text}}
+  <button ion-button (click)="startCamera()" icon-left ><ion-icon name="camera"></ion-icon> camera </button>
+  <button ion-button (click)="openGallery()" icon-left ><ion-icon name="photos"></ion-icon> Gallery</button>
+  <button ion-button (click)="startBarcode()" icon-left ><ion-icon name="barcode"></ion-icon> Barcode</button>
+
+  <img [src]="imageUrl" width="400" height="300" #image/>
+</div>
