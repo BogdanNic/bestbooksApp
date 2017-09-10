@@ -1,3 +1,47 @@
 page-add-book {
+.gridButtons {
+   // -webkit-align-self: flex-end;
+   // -ms-flex-item-align: end;
+   // align-self: flex-end;
+  // justify-content: space-between ;
+  }
+   .pull {
+   // float: right;
+   // margin-right: 20px;
+    width: 100px;
+     justify-content: flex-end;
+  }
+  .slide-zoom {
+    width: 90%;
+    height: 90%;
+  }
+  .container{
+    display: flex;
 
+    justify-content: space-between;
+  }
+  .button{
+    width: 100px;
+    flex-shrink: 1;
+  }
+
+  .slides{
+    //display: flex;
+    height: 95%;
+  }
+  .test{
+    text-align: center;
+    flex-shrink: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .wrapper{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .swiper-pagination-bullet{
+    margin-right: 5px;
+  }
 }
