@@ -19,6 +19,7 @@ import { BooksPage } from "../pages/books/books";
 import { ImagesComponent } from '../components/images/images';
 import { DetailComponent } from '../components/detail/detail';
 import { FinishComponent } from '../components/finish/finish';
+import { PopoverComponent } from '../components/popover/popover';
 
 //import { HttpModule } from '@angular/http';
 
@@ -32,7 +33,8 @@ import { FinishComponent } from '../components/finish/finish';
     AddBookPage,
     ImagesComponent,
     DetailComponent,
-    FinishComponent, 
+    FinishComponent,
+    PopoverComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +49,7 @@ import { FinishComponent } from '../components/finish/finish';
     LoginPage,
     BooksPage,
     AddBookPage,
+    PopoverComponent,
   ],
   providers: [
     StatusBar,
