@@ -12,7 +12,7 @@ import { ListPage } from '../pages/list/list';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { AuthProvider } from '../providers/auth/auth';
-import { HttpModule } from "@angular/http";
+import {Http, HttpModule} from "@angular/http";
 import { LoginPage } from "../pages/login/login";
 import { BooksProvider } from '../providers/books/books';
 import { BooksPage } from "../pages/books/books";
@@ -20,9 +20,12 @@ import { ImagesComponent } from '../components/images/images';
 import { DetailComponent } from '../components/detail/detail';
 import { FinishComponent } from '../components/finish/finish';
 import { PopoverComponent } from '../components/popover/popover';
-
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 //import { HttpModule } from '@angular/http';
-
+export function createTranslateLoader(http: Http) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 @NgModule({
   declarations: [
     MyApp,
@@ -39,7 +42,14 @@ import { PopoverComponent } from '../components/popover/popover';
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    HttpModule
+    HttpModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [Http]
+      }
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [

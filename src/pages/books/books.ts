@@ -1,8 +1,9 @@
 import { AddBookPage } from './../add-book/add-book';
 import { Book } from './../../models/Book';
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import {NavController, NavParams, PopoverController} from 'ionic-angular';
 import { BooksProvider } from "../../providers/books/books";
+import {PopoverComponent} from "../../components/popover/popover";
 
 
 /**
@@ -20,7 +21,8 @@ export class BooksPage {
 
   books : Book[] = [];
   storeBooks :Book[] =[];
-  constructor(public navCtrl: NavController, public navParams: NavParams,private booksProvider :BooksProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams,private booksProvider :BooksProvider,
+              private popoverCtrl:PopoverController) {
     this.books.push(new Book("my title","my description",2006));
     this.books.push(new Book("my title2","my description2",20016));
   }
@@ -40,8 +42,10 @@ export class BooksPage {
     }
   }
   addBook(){
-    this.navCtrl.push(AddBookPage);
+    //this.navCtrl.push(AddBookPage);
+    let d=this.popoverCtrl.create(PopoverComponent);
+    d.present();
   }
-  
+
 
 }
