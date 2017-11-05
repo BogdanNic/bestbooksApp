@@ -86,3 +86,66 @@ const puppeteer = require('puppeteer');
 //
 // })();
 //npm install i puppeteer
+(async() => {
+
+  const browser = await puppeteer.launch({headless:false});
+  const page = await browser.newPage();
+  // let pageData = fs.readFile('./config/test.html', (err, data) => {
+  //
+  // });
+  let logo =base64_encode("./config/example1.png");
+  let file = await readFile("./config/test.html");
+  //let logo = await readFile("./config/example1.png");
+  //let logoImg = logo.toString("base64");
+
+  let pageHtml = file.toString();
+  await page.setContent(pageHtml);
+
+
+  async function setSelectVal(selector, value) {
+
+    page.evaluate((data) => {
+      return document.querySelector(data.selector).innerText = data.value;
+    }, {selector, value})
+  }
+  async function setImage(selector, value) {
+
+    page.evaluate((data) => {
+      var image = new Image();
+      console.log(data.value);
+      image.src ="data:image/png;base64,"+ data.value;
+      return document.querySelector(data.selector).src = image.src;
+    }, {selector, value})
+  }
+  await setSelectVal('#nr1', 't');
+  await setImage("#logo",logo);
+  await page.screenshot({path: './config/example' +'.png'});
+ // await browser.close();
+
+})();
+function readFile(fileName) {
+  return new Promise((resolve, reject)=>{
+    let pageData = fs.readFile(fileName, (err, data) => {
+
+      if(err){
+        reject(err);
+      }else{
+        resolve(data);
+      }
+
+    });
+  })
+}
+function readImage(fileName) {
+  return new Promise((resolve, reject)=>{
+    let pageData = fs.readFile(fileName, (err, data) => {
+
+      if(err){
+        reject(err);
+      }else{
+        resolve(data);
+      }
+
+    });
+  })
+}
